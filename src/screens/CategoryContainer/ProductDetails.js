@@ -540,11 +540,14 @@ class ProductDetails extends React.Component {
     });
 
     const { productDetailsStateData, weight, weightArray, lengthArray } = this.state;
+    const { allParameterData } = this.props
 
     let url =
       urls.imageUrl +
       (productDetailsStateData !== undefined &&
         productDetailsStateData.zoom_image);
+
+    let headerTheme = allParameterData.theme_color ? allParameterData.theme_color : ''
 
 
     return (
@@ -568,7 +571,7 @@ class ProductDetails extends React.Component {
                   />
                 </TouchableOpacity>
                 <Animated.Text
-                  style={[styles.headerTextStyle, { opacity: headerOpacity }]}>
+                  style={[styles.headerTextStyle, { color: '#303030', opacity: headerOpacity }]}>
                   {productDetailsStateData.product_name}
                 </Animated.Text>
               </View>
@@ -589,14 +592,20 @@ class ProductDetails extends React.Component {
                     {this.carausalView(productDetailsStateData)}
                   </View>
 
-                  <View style={styles.mainContainerStyle}>
+                  <View style={{
+                    backgroundColor: headerTheme ? '#' + headerTheme : '#D7D7D7',
+                    borderTopLeftRadius: 30,
+                    borderTopRightRadius: 30,
+                  }}>
                     <View style={styles.topTitleContainer}>
                       <View style={{ width: wp(73) }}>
-                        <Text
+                        <Text numberOfLines={1}
                           style={{
                             color: 'white',
                             ...Theme.ffLatoRegular18,
                             letterSpacing: 0.8,
+                            marginLeft: 10,
+
                           }}>
                           {productDetailsStateData.product_name}
                         </Text>
@@ -608,13 +617,13 @@ class ProductDetails extends React.Component {
                         }}>
                         {productDetailsStateData.in_wishlist > 0 && (
                           <Image
-                            source={require('../../assets/Hertfill.png')}
-                            style={styles.ImageStyle}
+                            source={require('../../assets/like.png')}
+                            style={[styles.ImageStyle, { marginLeft: 5 }]}
                           />
                         )}
                         {productDetailsStateData.in_cart > 0 && (
                           <Image
-                            source={require('../../assets/Cart1.png')}
+                            source={require('../../assets/shopping-cart.png')}
                             style={styles.ImageStyle}
                           />
                         )}
@@ -625,7 +634,7 @@ class ProductDetails extends React.Component {
                     <View style={styles.quantityContainer}>
                       <View>
                         <Text
-                          style={{ ...Theme.ffLatoRegular16, color: '#000000' }}>
+                          style={{ ...Theme.ffLatoRegular16, color: '#fff' }}>
                           Quantity
                         </Text>
                       </View>
@@ -633,7 +642,7 @@ class ProductDetails extends React.Component {
                         <TouchableOpacity
                           onPress={() => this._decrementCount()}>
                           <Image
-                            source={IconPack.BLUE_MINUS}
+                            source={require('../../assets/minus-2.png')}
                             style={styles.decrementCount}
                           />
                         </TouchableOpacity>
@@ -647,7 +656,7 @@ class ProductDetails extends React.Component {
                         <TouchableOpacity
                           onPress={() => this._incrementCount()}>
                           <Image
-                            source={IconPack.BLUE_PLUS}
+                            source={require('../../assets/add.png')}
                             style={styles.incrementCountIcon}
                           />
                         </TouchableOpacity>
@@ -655,16 +664,16 @@ class ProductDetails extends React.Component {
                     </View>
 
                     <View style={styles.remarkContainer}>
-                      <Image
+                      {/* <Image
                         source={IconPack.REMARK}
                         style={styles.remarkIcon}
-                      />
+                      /> */}
                       <TextInput
                         style={styles.remarksInput}
                         onChangeText={remark => this.setState({ remark })}
                         value={String(this.state.remark)}
                         placeholder="Remarks"
-                        placeholderTextColor="#000000"
+                        placeholderTextColor="#fff"
                       />
                     </View>
 
@@ -824,7 +833,7 @@ class ProductDetails extends React.Component {
 
                       <View
                         style={{
-                          backgroundColor: color.green,
+                          backgroundColor: headerTheme ? '#' + headerTheme : '#303030',
                           height: hp(6),
                           borderTopLeftRadius: 18,
                           borderTopRightRadius: 18,
@@ -915,7 +924,7 @@ const styles = StyleSheet.create({
   headerTextStyle: {
     //color: color.brandColor,
     //fontSize: 21,
-    color: '#19af81',
+    color: '#303030',
     fontSize: hp(2.6),
     fontFamily: 'Lato-Bold',
     letterSpacing: 1,
@@ -942,8 +951,8 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   topBorderStyle: {
-    borderBottomColor: '#d7d7d7',
-    borderBottomWidth: 0.5,
+    borderBottomColor: '#fff',
+    borderBottomWidth: 0.6,
     marginHorizontal: 10,
   },
   quantityContainer: {
@@ -959,8 +968,8 @@ const styles = StyleSheet.create({
     marginTop: hp(0.5),
   },
   decrementCount: {
-    width: hp(5),
-    height: hp(5),
+    width: hp(3.5),
+    height: hp(3.5),
     resizeMode: 'contain',
   },
   countTextInput: {
@@ -969,17 +978,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     width: wp(30),
     textAlign: 'center',
-    fontSize: 22,
-    color: color.brandColor,
+    fontSize: 24,
+    color: '#fff',
   },
   incrementCountIcon: {
-    width: hp(5),
-    height: hp(5),
+    width: hp(3.5),
+    height: hp(3.5),
     resizeMode: 'contain',
   },
   remarkContainer: {
     flexDirection: 'row',
-    marginHorizontal: 20,
+    marginRight: 10,
     alignItems: 'center',
     height: hp(9),
   },
@@ -990,13 +999,13 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   remarksInput: {
-    borderBottomWidth: 1.3,
+    borderBottomWidth: 0.6,
     height: 50,
     marginHorizontal: 15,
-    width: wp(78),
+    width: wp(92),
     ...Theme.ffLatoRegular16,
-    color: '#000000',
-    borderBottomColor: '#19af81',
+    color: '#fff',
+    borderBottomColor: '#fff',
   },
   descriptionContainer: {
     backgroundColor: color.white,
@@ -1025,7 +1034,7 @@ const styles = StyleSheet.create({
   },
   border: {
     borderBottomColor: '#D3D3D3',
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 0.6,
     marginHorizontal: 20,
   },
   customerDetailTopborder: {

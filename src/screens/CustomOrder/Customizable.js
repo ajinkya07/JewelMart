@@ -18,7 +18,7 @@ import {
   Container,
   Content,
   Icon,
-  Picker,
+  // Picker,
   ActionSheet,
   Toast,
 } from 'native-base';
@@ -31,6 +31,7 @@ import moment from 'moment';
 import { color } from '@values/colors';
 import { submitCustomOrder } from '@customOrder/CustomOrderAction';
 import Theme from '../../values/Theme';
+import { Picker } from '@react-native-community/picker';
 
 
 
@@ -419,6 +420,8 @@ class Customizable extends Component {
     const { isDateTimePickerVisible } = this.state;
     const { allParameterData } = this.props
 
+    let headerTheme = allParameterData.theme_color ? allParameterData.theme_color : ''
+
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <KeyboardAvoidingView
@@ -639,7 +642,7 @@ class Customizable extends Component {
               height: 44,
               justifyContent: 'center',
               alignItems: 'center',
-              backgroundColor: color.green,
+              backgroundColor: headerTheme ? '#' + headerTheme : '#303030',
               borderTopLeftRadius: 16,
               borderTopRightRadius: 16,
             }}>

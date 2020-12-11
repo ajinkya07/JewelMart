@@ -255,7 +255,8 @@ class Register extends React.Component {
                     }}>
                     <Text style={{
                       fontFamily: 'Lato-Bold', textAlign: 'center',
-                      letterSpacing: 2, fontSize: 30, color: '#FFFFFF',
+                      letterSpacing: 2, fontSize: 30,
+                      color: '#fff',
                     }}>
                       Jewel Mart
                       </Text>
@@ -610,7 +611,7 @@ const actionButtonRoundedStyle = StyleSheet.create({
     alignItems: 'center',
   },
   titleStyle: {
-    color: '#ffffff',
+    color: '#fff',
     fontSize: hp(2),
     textAlign: 'center',
     alignItems: 'center',

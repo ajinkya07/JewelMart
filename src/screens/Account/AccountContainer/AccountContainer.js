@@ -45,7 +45,9 @@ const AccountRow = ({ icon, title, onPress }) => {
           <Text style={styles.titleText}>{title}</Text>
         </View>
         <View style={styles.view}>
-          <Image style={styles.forwardIconStyle} source={IconPack.FORWARD} />
+          <Image style={styles.forwardIconStyle}
+            source={IconPack.FORWARD}
+          />
         </View>
       </View>
       <View style={styles.border} />
@@ -284,7 +286,9 @@ class AccountContainer extends Component {
 
     const instagram = allParameterData.instagram
     const facebook = allParameterData.facebook
-    const catalog = allParameterData.catalogue
+    const schemes = allParameterData.schemes
+
+    let headerTheme = allParameterData.theme_color ? allParameterData.theme_color : ''
 
 
     return (
@@ -319,19 +323,21 @@ class AccountContainer extends Component {
               icon={IconPack.EXCLUSIVE}
               onPress={() => this.props.navigation.navigate('Exclusive')}
             />
-
+            <AccountRow
+              title="Scheme"
+              icon={IconPack.ABOUT}
+              onPress={() => this.props.navigation.navigate('CustomWebview', { link: schemes, title: 'Scheme' })}
+            />
             <AccountRow
               title="About Us"
               icon={IconPack.ABOUT}
-              // onPress={() => Linking.openURL(aboutUS)}
               onPress={() => this.props.navigation.navigate('CustomWebview', { link: aboutUS, title: 'About Us' })}
             />
-            {/* <AccountRow
+            <AccountRow
               title="Privacy Policy"
               icon={IconPack.ABOUT}
-              // onPress={() => Linking.openURL(privacyPolicy)}
               onPress={() => this.props.navigation.navigate('CustomWebview', { link: privacyPolicy, title: 'Privacy Policy' })}
-            /> */}
+            />
 
             <AccountRow
               title="Terms & Conditions"
@@ -396,7 +402,7 @@ class AccountContainer extends Component {
                     <View style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
-                      backgroundColor: color.green
+                      backgroundColor: headerTheme ? '#' + headerTheme : '#303030'
                     }}>
                       <Text style={{
                         color: '#FFFFFF',
@@ -484,7 +490,7 @@ class AccountContainer extends Component {
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
-                      backgroundColor: color.green,
+                      backgroundColor: headerTheme ? '#' + headerTheme : '#303030',
                       borderTopLeftRadius: 10, borderTopRightRadius: 10
                     }}>
                     <Text
@@ -511,11 +517,11 @@ class AccountContainer extends Component {
                       marginLeft: 20
                     }}>
                     <Text
-                      style={{ fontSize: 15, color: '#A9A9A9', marginBottom: 7 }}>
+                      style={{ fontSize: 15, marginBottom: 7 }}>
                       Contact : {selectedPhoneNo && selectedPhoneNo}
                     </Text>
                     <Text
-                      style={{ fontSize: 15, color: '#A9A9A9', marginBottom: 7 }}>
+                      style={{ fontSize: 15, marginBottom: 7 }}>
                       Description : Orders
                     </Text>
                   </View>
@@ -527,7 +533,8 @@ class AccountContainer extends Component {
                           isCallModalVisible: false,
                         })
                       }
-                      containerStyle={styles.buttonStyle}
+                      // containerStyle={styles.buttonStyle}
+                      color={headerTheme}
                     />
                   </View>
                 </View>
@@ -549,7 +556,7 @@ class AccountContainer extends Component {
             <TouchableWithoutFeedback style={styles.flex}>
               <View style={styles.contain}>
 
-                <View style={styles.titleContainer}>
+                <View style={[styles.titleContainer, { backgroundColor: headerTheme ? '#' + headerTheme : '#303030' }]}>
                   <Text style={styles.titleText2}>Social Media</Text>
                   <TouchableOpacity
                     onPress={() => this.closeSocialMediaModal()}>
@@ -565,7 +572,8 @@ class AccountContainer extends Component {
                   <ActionButtonRounded
                     title="CANCEL"
                     onButonPress={() => this.closeSocialMediaModal()}
-                    containerStyle={styles.buttonStyle}
+                    // containerStyle={styles.buttonStyle}
+                    color={headerTheme}
                   />
                 </View>
               </View>
@@ -628,7 +636,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   editProfileText: {
-    color: '#FFFFFF',
+    color: '#fff',
     fontWeight: '400',
     fontSize: 18,
     textDecorationLine: 'underline',
@@ -636,7 +644,7 @@ const styles = StyleSheet.create({
 
   },
   profileName: {
-    color: '#FFFFFF',
+    color: '#fff',
     paddingTop: 8,
     paddingBottom: 10,
     ...Theme.ffLatoBold20,
@@ -651,17 +659,16 @@ const styles = StyleSheet.create({
   },
   accountRowViewContainer: {
     flexDirection: 'row',
-    //justifyContent: 'space-between',
-    marginHorizontal: 25,
+    marginHorizontal: 20,
     alignItems: 'center',
     padding: 10,
   },
   titleText: {
     // fontSize: hp(2.2),
-    color: '#FFFFFF',
+    color: '#fff',
+    marginLeft: 20,
     // fontFamily: 'Lato-Regular',
     ...Theme.ffLatoMedium18,
-
   },
   borderStyle: {
     borderBottomColor: '#d2d2d2',
@@ -786,17 +793,19 @@ const RowData = ({ title, onPress }) => {
 };
 
 
-const ActionButtonRounded = ({ title, onButonPress, containerStyle }) => {
+const ActionButtonRounded = ({ title, onButonPress, containerStyle, color }) => {
   return (
     <TouchableOpacity
       onPress={() => {
         onButonPress();
       }}>
-      <View
-        style={[
-          actionButtonRoundedStyle.mainContainerStyle,
-          containerStyle || null,
-        ]}>
+      <View style={{
+        backgroundColor: color ? '#' + color : '#303030',
+        height: hp(6),
+        width: wp(35),
+        justifyContent: 'center',
+        borderRadius: 45,
+      }}>
         <View style={actionButtonRoundedStyle.innerContainer}>
           <Text style={actionButtonRoundedStyle.titleStyle}>{title}</Text>
         </View>

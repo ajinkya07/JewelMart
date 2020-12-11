@@ -657,6 +657,8 @@ class SearchScreen extends Component {
 
         let statusArray = [{ 'id': '1', 'status': 'Available' }, { 'id': '2', 'status': 'Sold' }]
 
+        let headerTheme = allParameterData.theme_color ? allParameterData.theme_color : ''
+
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: '#f3fcf9' }}>
                 <_CustomHeader
@@ -745,15 +747,29 @@ class SearchScreen extends Component {
                     alignItems: 'center',
                     justifyContent: 'center', marginBottom: 10, marginTop: 10,
                 }}>
-                    <ActionButtonRounded
-                        title="SEARCH"
-                        onButonPress={() => this.searchProducts()}
-                        containerStyle={styles.roundedButtonSearch}
-                        textStyle={{
-                            color: '#FFFFFF',
-                            fontSize: 16, fontFamily: 'Lato-Bold',
-                        }}
-                    />
+                    <TouchableOpacity onPress={() => this.searchProducts()}>
+                        <View
+                            style={{
+                                backgroundColor: headerTheme ? '#' + headerTheme : '#303030',
+                                height: 50,
+                                width: wp(85),
+                                justifyContent: 'center',
+                                borderRadius: 40,
+                                marginVertical: 5,
+                            }}>
+                            <View style={{
+                                width: '100%',
+                                height: '100%',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                            }}>
+                                <Text style={{
+                                    color: '#FFFFFF',
+                                    fontSize: 16, fontFamily: 'Lato-Bold',
+                                }}>SEARCH</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
                 </View>
 
                 {isModalVisible &&
@@ -815,7 +831,9 @@ class SearchScreen extends Component {
                                 <ActionButtonRounded
                                     title="CONTINUE"
                                     onButonPress={() => this.continuecategoryModal()}
-                                    containerStyle={styles.buttonStyle}
+                                    // containerStyle={styles.buttonStyle}
+                                    color={headerTheme}
+
                                 />
                             </View>
                         </SafeAreaView>
@@ -832,7 +850,7 @@ class SearchScreen extends Component {
 
                             style={{ margin: 30 }}>
                             <View style={styles.container}>
-                                <View style={styles.topContainer}>
+                                <View style={[styles.topContainer, { backgroundColor: headerTheme ? '#' + headerTheme : '#303030', }]}>
                                     <Text style={styles.title}>Search By Code</Text>
                                 </View>
                                 <View style={styles.bottomConatiner}>
@@ -859,7 +877,8 @@ class SearchScreen extends Component {
                                     <ActionButtonRounded
                                         title="CONTINUE"
                                         onButonPress={() => this.searchByCode()}
-                                        containerStyle={styles.buttonStyle}
+                                        // containerStyle={styles.buttonStyle}
+                                        color={headerTheme}
                                     />
                                 </View>
 
@@ -886,7 +905,7 @@ class SearchScreen extends Component {
                         style={{ margin: 0 }}>
                         <TouchableWithoutFeedback >
                             <View style={styles.container1}>
-                                <View style={styles.titleContainer}>
+                                <View style={{ backgroundColor: headerTheme ? '#' + headerTheme : "#303030", }}>
                                     <Text style={styles.titleText}>Select Melting</Text>
                                     <View style={styles.closeIconView}>
                                         <TouchableOpacity
@@ -945,7 +964,9 @@ class SearchScreen extends Component {
                                     <ActionButtonRounded
                                         title="CONTINUE"
                                         onButonPress={() => this.onOKkaratSelected()}
-                                        containerStyle={styles.buttonStyle}
+                                        // containerStyle={styles.buttonStyle}
+                                        color={headerTheme}
+
                                     />
                                 </View>
                             </View>
@@ -1224,15 +1245,19 @@ const styles = StyleSheet.create({
 });
 
 ///--------------------------------ActionButton------------------
-const ActionButtonRounded = ({ title, onButonPress, containerStyle, }) => {
+const ActionButtonRounded = ({ title, onButonPress, containerStyle, color }) => {
     return (
         <TouchableOpacity
             onPress={() => { onButonPress() }}>
             <View
-                style={[
-                    actionButtonRoundedStyle.mainContainerStyle,
-                    containerStyle || null,
-                ]}>
+                style={{
+                    backgroundColor: color ? '#' + color : '#303030',
+                    height: 42,
+                    width: 140,
+                    justifyContent: 'center',
+                    borderRadius: 40,
+                    marginTop: 10,
+                }}>
                 <View style={actionButtonRoundedStyle.innerContainer}>
                     <Text style={actionButtonRoundedStyle.titleStyle}>{title}</Text>
                 </View>

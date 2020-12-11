@@ -9,6 +9,7 @@ export const urls = {
     imageUrl: "http://demo.jewelmarts.in/",
 
 
+
     Login: {
         url: url + "User_registration/userLogin",
     },

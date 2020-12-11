@@ -233,11 +233,11 @@ class SignIn extends React.Component {
                         marginTop: hp(10),
                         height: hp(19),
                       }}>
-
-
                       <Text style={{
                         fontFamily: 'Lato-Bold',
-                        textAlign: 'center', letterSpacing: 2, fontSize: 30, color: '#FFFFFF',
+                        textAlign: 'center', letterSpacing: 2,
+                        fontSize: 30,
+                        color: '#fff',
                       }}>
                         Jewel Mart
                       </Text>
@@ -263,8 +263,8 @@ class SignIn extends React.Component {
                       value={password ? password : null}
                       type="password"
                       inputKey="password"
-                      maxLength={10}
-                      minLength={6}
+                      maxLength={50}
+                      minLength={4}
                       onChangeText={this.onInputChanged}
                       placeholder="Password"
                       returnKeyType="done"
@@ -284,8 +284,7 @@ class SignIn extends React.Component {
                           style={{
                             paddingVertical: 22,
                             fontSize: 18,
-                            //color: '#fbcb84',
-                            color: '#ffffff',
+                            color: '#fff',
                             marginBottom: 10,
                             fontFamily: 'Lato-Regular',
                           }}>
@@ -309,8 +308,7 @@ class SignIn extends React.Component {
                         style={{
                           paddingTop: 12,
                           fontSize: 18,
-                          //color: '#fbcb84',
-                          color: '#FFFFFF',
+                          color: '#fff',
                           fontFamily: 'Lato-Regular',
                         }}>
                         Don't have an account ?
@@ -323,7 +321,7 @@ class SignIn extends React.Component {
                           style={{
                             fontSize: 18,
                             //color: '#fbcb84',
-                            color: '#ffffff',
+                            color: '#fff',
                             fontFamily: 'Lato-Bold',
                             paddingTop: 12,
                             marginLeft: 5,
@@ -503,7 +501,7 @@ const loginFieldsStyles = StyleSheet.create({
   textInput: {
     height: 50,
     fontSize: 18,
-    color: '#FFFFFF',
+    color: '#fff',
     textAlign: 'left',
     marginTop: 20,
     backgroundColor: '#FFFFFF25',
@@ -596,7 +594,7 @@ const actionButtonRoundedStyle = StyleSheet.create({
     alignItems: 'center',
   },
   titleStyle: {
-    color: '#ffffff',
+    color: '#fff',
     fontSize: hp(2),
     textAlign: 'center',
     alignItems: 'center',

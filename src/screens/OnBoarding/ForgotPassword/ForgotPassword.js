@@ -201,7 +201,8 @@ class ForgotPassword extends React.Component {
                     <View style={{ marginBottom: hp(5) }}>
                       <Text style={{
                         fontFamily: 'Lato-Bold', textAlign: 'center',
-                        letterSpacing: 2, fontSize: 30, color: '#FFFFFF',
+                        letterSpacing: 2, fontSize: 30,
+                        color: '#fff',
                       }}>
                         Jewel Mart
                       </Text>
@@ -210,7 +211,7 @@ class ForgotPassword extends React.Component {
                     <Text
                       style={{
                         fontSize: hp(2.2),
-                        color: '#ffffff', marginHorizontal: 20,
+                        color: '#fff', marginHorizontal: 20,
                         textAlign: 'center',
                         fontFamily: 'Lato-Regular',
                       }}>
@@ -238,8 +239,8 @@ class ForgotPassword extends React.Component {
                       value={password ? password : null}
                       type="password"
                       inputKey="password"
-                      maxLength={10}
-                      minLength={10}
+                      maxLength={50}
+                      minLength={4}
                       onChangeText={this.onInputChanged}
                       placeholder="New Password"
                       returnKeyType="done"
@@ -530,7 +531,7 @@ const actionButtonRoundedStyle = StyleSheet.create({
     alignItems: 'center',
   },
   titleStyle: {
-    color: '#ffffff',
+    color: '#fff',
     fontSize: hp(2),
     textAlign: 'center',
     alignItems: 'center',

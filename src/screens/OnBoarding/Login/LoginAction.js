@@ -83,6 +83,7 @@ export function signInRequest(data) {
       }
     })
       .catch(function (error) {
+        console.log("error", error);
         dispatch(
           onFailure(strings.serverFailedMsg, LOGIN_DATA_ERROR)
         );
@@ -93,7 +94,6 @@ export function signInRequest(data) {
 
 
 export function sendFCM(data) {
-  console.warn("sendFCM", data);
 
   return dispatch => {
     axios.post(urls.sendFCMToken.url, data, header).then(response => {

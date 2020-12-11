@@ -979,6 +979,7 @@ class HomePage extends Component {
 
     const categoryData = homePageData && homePageData.collection ? homePageData.collection : []
 
+
     return (
       <View style={mainContainer}>
         <ScrollView
@@ -1007,7 +1008,7 @@ class HomePage extends Component {
           {userStatus.status == 'Active' &&
             <View>
               <View style={{
-                marginTop: hp(2), marginBottom: -10, borderColor: '#DDDDDD',
+                marginBottom: -10, borderColor: '#DDDDDD',
                 height: hp(27), width: '100%',
               }}>
                 <Image
@@ -1063,7 +1064,6 @@ class HomePage extends Component {
                 </ScrollView>
               </View>
             ))}
-
 
 
           {/*  IMAGE ON LONG PRESS */}

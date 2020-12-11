@@ -168,14 +168,14 @@ class Notification extends Component {
                 style={{
                     justifyContent: 'center',
                     alignItems: 'center',
-                    bottom: hp(8),
+                    bottom: hp(30),
                     flex: 1
                 }}>
                 <Image
                     source={require('../../../assets/gif/noData.gif')}
                     style={{ height: hp(20), width: hp(20) }}
                 />
-                <Text style={{ fontSize: 18, fontWeight: '400', textAlign: 'center' }}>
+                <Text style={{ marginTop: 10, fontSize: 18, fontWeight: '400', textAlign: 'center' }}>
                     {msg}
                 </Text>
             </View>

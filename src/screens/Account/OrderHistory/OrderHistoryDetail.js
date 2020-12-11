@@ -312,8 +312,12 @@ class OrderHistoryDetail extends Component {
   };
 
   OrderDetailBottomTab = d => {
+    const { allParameterData } = this.props;
+
+    let headerTheme = allParameterData.theme_color ? allParameterData.theme_color : ''
+
     return (
-      <View style={styles.cardContainer}>
+      <View style={[styles.cardContainer, { backgroundColor: headerTheme ? '#' + headerTheme : '#303030', }]}>
         <View
           style={{
             flex: 1.8,
@@ -658,6 +662,11 @@ function mapStateToProps(state) {
     errorTotalCartCountVersion:
       state.homePageReducer.errorTotalCartCountVersion,
     totalCartCountData: state.homePageReducer.totalCartCountData,
+
+    allParameterData: state.homePageReducer.allParameterData,
+    successAllParameterVersion: state.homePageReducer.successAllParameterVersion,
+    errorAllParamaterVersion: state.homePageReducer.errorAllParamaterVersion,
+
   };
 }
 

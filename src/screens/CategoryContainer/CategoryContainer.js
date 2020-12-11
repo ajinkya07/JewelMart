@@ -195,7 +195,6 @@ class CategoryContainer extends Component {
                           borderWidth: 0.4, borderColor: color.gray
                         }}
                         source={{ uri: baseUrl + item.image_name }}
-                        // defaultSource={require('../../assets/image/default.png')}
                         defaultSource={IconPack.APP_LOGO}
 
                       />
@@ -203,7 +202,6 @@ class CategoryContainer extends Component {
 
                     <View style={{ alignContent: 'center', justifyContent: 'center', flex: 0.70 }}>
                       <_Text numberOfLines={2} fwSmall
-                        //textColor={color.white}
                         fsMedium style={{ marginRight: hp(3), marginLeft: Platform.OS === 'ios' ? hp(1) : 0 }}>
                         {capitalizeFirstLetter(item.col_name)}
                       </_Text>

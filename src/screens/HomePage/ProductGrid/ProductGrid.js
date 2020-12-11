@@ -655,6 +655,7 @@ class ProductGrid extends Component {
                 justifyContent: 'space-between',
                 width: '100%',
                 paddingHorizontal: 6.5,
+                top: 2,
                 flex: 1,
               }}>
               <View style={{ flex: 1 }}>
@@ -1565,7 +1566,7 @@ class ProductGrid extends Component {
             `(${gridData.length.toString()})` + ' ' + `${categoryData.col_name != undefined ? categoryData.col_name : collectionName}`
           }
           RightBtnIcon1={require('../../../assets/image/BlueIcons/Search-White.png')}
-          RightBtnIcon2={require('../../../assets/image/GreyCart.png')}
+          RightBtnIcon2={require('../../../assets/shopping-cart.png')}
           RightBtnPressOne={() => this.props.navigation.navigate('SearchScreen')}
           RightBtnPressTwo={() => this.props.navigation.navigate('CartContainer', { fromProductGrid: true })}
           rightIconHeight2={hp(3.5)}
@@ -1734,7 +1735,7 @@ class ProductGrid extends Component {
               }}>
               <Image
                 style={{ height: hp(2.8), width: hp(2.8), marginRight: hp(2) }}
-                source={require('../../../assets/Selection.png')}
+                source={require('../../../assets/grid-2.png')}
               />
               <_Text
                 fsHeading
