@@ -412,43 +412,6 @@ class SearchScreen extends Component {
         )
     }
 
-    selectCategories = () => {
-        const { selectedCategories, isContinueClicked } = this.state
-
-        return (
-            <View style={{ marginHorizontal: wp(3) }}>
-                <_Text fsHeading>Select Categories:</_Text>
-
-                {selectedCategories.length > 0 && isContinueClicked &&
-                    <View style={{ flexDirection: 'row', flexWrap: 'wrap', top: 3, }}>
-                        {selectedCategories.length > 0 && <_Text fsPrimary>Selected: </_Text>}
-                        {selectedCategories.map(s => {
-                            return <_Text fsPrimary> {s.name},</_Text>
-                        })}
-                    </View>
-                }
-
-                {/* <TouchableOpacity onPress={() => this.toggleModal()}>
-                    <View style={{ marginHorizontal: wp(3), justifyContent: 'center', alignItems: 'center' }}>
-                        <View style={styles.roundedButton}>
-                            <View style={styles.buttonText}>
-                                <_Text fsHeading bold>SELECT CATEGORIES</_Text>
-                            </View>
-                        </View>
-                    </View>
-                </TouchableOpacity> */}
-                <View style={{ marginHorizontal: wp(3), justifyContent: 'center', alignItems: 'center' }}>
-                    <ActionButtonRounded2
-                        title="SELECT CATEGORIES"
-                        onButonPress={() => this.toggleModal()}
-                        containerStyle={styles.roundedButton}
-                        textStyle={styles.buttonText}
-                    />
-                </View>
-
-            </View>
-        )
-    }
 
     searchButton = () => {
         return (
@@ -831,9 +794,7 @@ class SearchScreen extends Component {
                                 <ActionButtonRounded
                                     title="CONTINUE"
                                     onButonPress={() => this.continuecategoryModal()}
-                                    // containerStyle={styles.buttonStyle}
                                     color={headerTheme}
-
                                 />
                             </View>
                         </SafeAreaView>
@@ -1266,22 +1227,6 @@ const ActionButtonRounded = ({ title, onButonPress, containerStyle, color }) => 
     );
 };
 
-const ActionButtonRounded2 = ({ title, onButonPress, containerStyle, }) => {
-    return (
-        <TouchableOpacity
-            onPress={() => { onButonPress() }}>
-            <View
-                style={[
-                    actionButtonRoundedStyle.mainContainerStyle,
-                    containerStyle || null,
-                ]}>
-                <View style={actionButtonRoundedStyle.innerContainer}>
-                    <Text style={actionButtonRoundedStyle.titleStyle2}>{title}</Text>
-                </View>
-            </View>
-        </TouchableOpacity>
-    );
-};
 
 const actionButtonRoundedStyle = StyleSheet.create({
     mainContainerStyle: {
